@@ -33,7 +33,7 @@ export default function LiReceivedMessage({ message, recipients }) {
         </time>
       </div>
       <div className="mt-1">
-        <p className="line-clamp-2 text-sm text-gray-600">{message.message}</p>
+        <p className="line-clamp-8 text-sm text-gray-600">{message.message}</p>
       </div>
     </li>
   );
