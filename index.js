@@ -4,7 +4,6 @@ import { Server } from "socket.io";
 import cors from "cors";
 import mysql from "mysql2";
 import { config } from "dotenv";
-import path from "path";
 
 config();
 
