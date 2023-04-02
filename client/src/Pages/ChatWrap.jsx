@@ -7,7 +7,7 @@ import { getListRec, receivedMessage } from "../API";
 import Header from "./Header";
 import LiReceivedMessage from "./LiReceivedMessage";
 
-const socket = io.connect("http://localhost:5001");
+const socket = io.connect(`http://${window.location.hostname}:5001`);
 
 export default function ChatWrap() {
   const [receivedMessages, setReceivedMessages] = useState([]);

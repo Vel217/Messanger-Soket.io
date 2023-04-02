@@ -2,19 +2,23 @@ import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
-import router from "./route.js";
 import mysql from "mysql2";
+import { config } from "dotenv";
+
+config();
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "9270077607Vel",
-  database: "task6",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  insecureAuth: true,
 });
 
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: "*" }));
+app.use(express.static("../client/build"));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {

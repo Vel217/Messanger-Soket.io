@@ -1,5 +1,5 @@
 export const getListRec = async () => {
-  const url = "http://localhost:5001/list";
+  const url = "/list";
   const response = await fetch(url, {
     method: "GET",
   });
@@ -7,7 +7,7 @@ export const getListRec = async () => {
 };
 
 export const getUserByName = async (name) => {
-  const url = "http://localhost:5001/getUserByName";
+  const url = "/getUserByName";
   const data = { name: name };
   const response = await fetch(
     url,
@@ -25,7 +25,7 @@ export const getUserByName = async (name) => {
 };
 
 export const login = async (name) => {
-  const url = "http://localhost:5001/login";
+  const url = "/login";
   const data = {
     name: name,
   };
@@ -41,7 +41,7 @@ export const login = async (name) => {
 };
 
 export const sendMessage = async (senderID, recipID, subject, message) => {
-  const url = "http://localhost:5001/sendMessage";
+  const url = "/sendMessage";
   const data = {
     sender_id: senderID,
     recipient_id: recipID,
@@ -60,7 +60,7 @@ export const sendMessage = async (senderID, recipID, subject, message) => {
 };
 
 export const listSendMessage = async (myId, recId) => {
-  const url = "http://localhost:5001/listSendMessage";
+  const url = "/listSendMessage";
   const data = {
     sender_id: myId,
     recipient_id: recId,
@@ -77,7 +77,7 @@ export const listSendMessage = async (myId, recId) => {
 };
 
 export const receivedMessage = async (myId) => {
-  const url = "http://localhost:5001/receivedMessage";
+  const url = "/receivedMessage";
   const data = {
     recipient_id: myId,
   };
