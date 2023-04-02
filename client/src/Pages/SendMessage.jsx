@@ -61,7 +61,7 @@ function SendMessage() {
     });
   };
   useEffect(() => {
-    setError(false);
+    setEmptyError(false);
   }, [subject, textarea, currentRecipientId]);
 
   useEffect(() => {
