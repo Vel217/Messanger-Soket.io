@@ -21,6 +21,7 @@ function SendMessage() {
   const [messages, setMessages] = useState([]);
   const [activeId, setActiveId] = useState("");
   const [currentRecipientId, setCurrentRecipientId] = useState("");
+  const [emptyError, setEmptyError] = useState(false);
 
   let location = useLocation();
 
@@ -48,6 +49,9 @@ function SendMessage() {
   }, [activeId, currentRecipientId]);
 
   const onSend = () => {
+    if (!subject || !textarea || !currentRecipientId) {
+      setEmptyError(true);
+    }
     sendMessage(activeId, currentRecipientId, subject, textarea).then((res) => {
       if (res.status === 200) {
         setSubject("");
@@ -56,6 +60,9 @@ function SendMessage() {
       }
     });
   };
+  useEffect(() => {
+    setError(false);
+  }, [subject, textarea, currentRecipientId]);
 
   useEffect(() => {
     listSendMessage(activeId, currentRecipientId)
@@ -112,6 +119,7 @@ function SendMessage() {
             placeholder="Subject of mail"
           />
         </div>
+        {emptyError && <p className="text-red-800">fields can't be empty </p>}
 
         <div className="flex items-start space-x-4 mt-2">
           <div className="min-w-0  flex-1 relative">
