@@ -51,14 +51,17 @@ function SendMessage() {
   const onSend = () => {
     if (!subject || !textarea || !currentRecipientId) {
       setEmptyError(true);
+    } else {
+      sendMessage(activeId, currentRecipientId, subject, textarea).then(
+        (res) => {
+          if (res.status === 200) {
+            setSubject("");
+            setTextarea("");
+            getMessages();
+          }
+        }
+      );
     }
-    sendMessage(activeId, currentRecipientId, subject, textarea).then((res) => {
-      if (res.status === 200) {
-        setSubject("");
-        setTextarea("");
-        getMessages();
-      }
-    });
   };
   useEffect(() => {
     setEmptyError(false);
