@@ -117,6 +117,6 @@ app.get("/list", async (req, res) => {
   }
 });
 
-server.listen(5001, () => {
+server.listen(process.env.PORT, () => {
   console.log("start");
 });
