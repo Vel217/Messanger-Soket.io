@@ -4,6 +4,8 @@ import { Server } from "socket.io";
 import cors from "cors";
 import mysql from "mysql2";
 import { config } from "dotenv";
+import path from "path";
+import * as url from "url";
 
 config();
 
@@ -118,6 +120,12 @@ app.get("/list", async (req, res) => {
   } catch (error) {
     res.status(500).send(error);
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(
+    path.join(url.fileURLToPath(import.meta.url), "../client/build/index.html")
+  );
 });
 
 server.listen(process.env.PORT, () => {
