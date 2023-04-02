@@ -73,7 +73,7 @@ function SendMessage() {
   };
 
   return (
-    <div className="h-screen text-sm">
+    <div className="h-full text-sm">
       <div className="h-2/5  mb-2 p-2 border-solid border-indigo-900 rounded-lg border-2 flex flex-col gap-1">
         <div className="relative mb-3 mt-3">
           <label
