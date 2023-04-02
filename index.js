@@ -4,6 +4,7 @@ import { Server } from "socket.io";
 import cors from "cors";
 import mysql from "mysql2";
 import { config } from "dotenv";
+import path from "path";
 
 config();
 
@@ -19,7 +20,9 @@ const connection = mysql.createPool({
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: "*" }));
-app.use(express.static("../client/build"));
+
+app.use(express.static("./client/build"));
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
